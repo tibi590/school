@@ -14,6 +14,7 @@ body {
     background-size: 110%;
     background-position-x: 40%;
 
+    /* Background image blur */
     backdrop-filter: blur(0px);
 
     /* Background image animation */
@@ -22,6 +23,7 @@ body {
     animation-iteration-count: infinite;
 }
 
+/* Setting keyframes for X axis movement */
 @keyframes bg_move {
   0% {background-position-x: 40%;}
   50% {background-position-x: 60%;}
@@ -31,17 +33,26 @@ body {
 .container {
     width: 100%;
     height: 100%;
+
+    /* Linear-gradient from dark blue into alpha */
     background: linear-gradient(to top, rgb(0, 34, 77) 15%, rgba(0, 0, 0, 0) 80%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+
+    /* Setting grid placements */
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
 }
 
 .route_container {
-
+    /* Setting container to take up 2/3 (left) of the screen */
+    display: grid;
+    grid-column: 1 / span 2;
 }
 
 .information_container {
-
+    /* Setting container to take up 1/3 (right) of the screen */
+    grid-column: 3;
 }
