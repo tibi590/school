@@ -3,10 +3,11 @@ SELECT
     routes.firstDeparture,
     routes.lastDeparture,
     routes.cycle as 'cycle',
+    routes.isGoingUp,
     drivers.fullName,
-    drivers.licenseplate,
+    drivers.licensePlate,
     stops.stopName,
-    routegroups.minutetonextstop
+    routegroups.minuteToNextStop
 FROM 
     assingments INNER JOIN drivers
       ON assingments.driverId = drivers.id

@@ -9,7 +9,7 @@ USE buses;
 CREATE TABLE drivers (
     id int PRIMARY KEY AUTO_INCREMENT,
     fullName varchar(32) NOT NULL,
-    licenseplate varchar(7) NOT NULL
+    licensePlate varchar(7) NOT NULL
 );
 
 CREATE TABLE stops (
@@ -22,14 +22,15 @@ CREATE TABLE routes (
     routeNumber int NOT NULL,
     firstDeparture time NOT NULL,
     lastDeparture time NOT NULL,
-    cycle int NOT NULL
+    cycle int NOT NULL,
+    isGoingUp bool NOT NULL
 );
 
 CREATE TABLE routegroups (
     id int PRIMARY KEY AUTO_INCREMENT,
     routeId int NOT NULL,
     stopId int NOT NULL, 
-    minutetonextstop int, -- if the value is NULL then it's the last stop
+    minuteToNextStop int, -- if the value is NULL then it's the last stop
     FOREIGN KEY (stopId) REFERENCES stops(id),
     FOREIGN KEY (routeId) REFERENCES routes(id)
 );
@@ -69,20 +70,20 @@ INSERT INTO stops VALUES
     (NULL, 'Szombathely'); -- 10
 
 INSERT INTO routes VALUES 
-    (NULL, 100, '6:00', '17:30', 30), -- 1: Debrecen ->  Nyíregyháza -> Miskolc
-    (NULL, 100, '6:00', '17:30', 30), -- 2: Miskolc -> Nyíregyháza -> Debrecen 
+    (NULL, 100, '6:00', '17:30', 30, 'true'), -- 1: Debrecen ->  Nyíregyháza -> Miskolc
+    (NULL, 100, '6:00', '17:30', 30, 'false'), -- 2: Miskolc -> Nyíregyháza -> Debrecen 
 
-    (NULL, 101, '8:00', '17:30', 60), -- 3: Győr -> Szombathely 
-    (NULL, 101, '8:00', '17:30', 60), -- 4: Szombathely -> Győr 
+    (NULL, 101, '8:00', '17:00', 60, 'true'), -- 3: Győr -> Szombathely 
+    (NULL, 101, '8:00', '17:00', 60, 'false'), -- 4: Szombathely -> Győr 
 
-    (NULL, 102, '8:00', '17:30', 60), -- 5: Szeged -> Pécs
-    (NULL, 102, '8:00', '17:30', 60), -- 6: Pécs -> Szeged 
+    (NULL, 102, '8:00', '17:00', 60, 'true'), -- 5: Szeged -> Pécs
+    (NULL, 102, '8:00', '17:00', 60, 'false'), -- 6: Pécs -> Szeged 
 
-    (NULL, 103, '7:00', '19:30', 120), -- 7: Budapest -> Kecskemét -> Szeged 
-    (NULL, 103, '7:00', '19:30', 120), -- 8: Szeged -> Kecskemét -> Budapest
+    (NULL, 103, '7:00', '19:00', 120, 'true'), -- 7: Budapest -> Kecskemét -> Szeged 
+    (NULL, 103, '7:00', '19:00', 120, 'false'), -- 8: Szeged -> Kecskemét -> Budapest
 
-    (NULL, 104, '12:00', '16:30', 60), -- 9: Budapest -> Székesfehérvár
-    (NULL, 104, '12:00', '16:30', 60); -- 10: Székesfehérvár -> Budapest 
+    (NULL, 104, '12:00', '16:00', 60, 'true'), -- 9: Budapest -> Székesfehérvár
+    (NULL, 104, '12:00', '16:00', 60, 'false'); -- 10: Székesfehérvár -> Budapest 
 
 INSERT INTO routegroups VALUES 
     (NULL, 1, 2, 30),
