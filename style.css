@@ -1,0 +1,47 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    /* Default background color */
+    background-color: rgb(255, 32, 78);
+
+    /* Background image */
+    background-image: url("pictures/page_bg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 110%;
+    background-position-x: 40%;
+
+    backdrop-filter: blur(0px);
+
+    /* Background image animation */
+    animation-name: bg_move;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bg_move {
+  0% {background-position-x: 40%;}
+  50% {background-position-x: 60%;}
+  100% {background-position-x: 40%;}
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgb(0, 34, 77) 15%, rgba(0, 0, 0, 0) 80%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: grid;
+}
+
+.route_container {
+
+}
+
+.information_container {
+
+}
